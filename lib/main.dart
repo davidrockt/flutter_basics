@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/Product.dart';
+import 'package:flutter_basics/ShoppingListItem.dart';
 
 import 'Counter.dart';
 
@@ -54,6 +56,10 @@ class TutorialHome extends StatelessWidget {
             ),
           ),
           const Counter(),
+          ShoppingListItem(
+              product: const Product(name: 'Chips'),
+              inCart: true,
+              onCartChanged: (product, inCart){})
         ],
       ),
       floatingActionButton: const FloatingActionButton(
