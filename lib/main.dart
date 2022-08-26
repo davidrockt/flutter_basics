@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_basics/Product.dart';
 import 'package:flutter_basics/ShoppingListItem.dart';
 
-import 'Counter.dart';
 
-
-class TutorialHome extends StatelessWidget {
-  const TutorialHome({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,39 +27,11 @@ class TutorialHome extends StatelessWidget {
         ],
       ),
       // body is the majority of the screen.
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8.0),
-            margin: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-            child: const Center(
-              child: Text('Hello, world!'),
-            ),
-          ),
-          GestureDetector(
-            onTap: () {
-              print('MyButton was tapped!');
-            },
-            child: Container(
-              height: 50.0,
-              padding: const EdgeInsets.all(8.0),
-              margin: const EdgeInsets.symmetric(horizontal: 8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5.0),
-                color: Colors.lightGreen[500],
-              ),
-              child: const Center(
-                child: Text('Engage'),
-              ),
-            ),
-          ),
-          const Counter(),
-          ShoppingListItem(
-              product: const Product(name: 'Chips'),
-              inCart: true,
-              onCartChanged: (product, inCart){})
-        ],
-      ),
+      body: const ShoppingList(products: [
+            Product(name: 'Chips'),
+            Product(name: 'Bananas'),
+            Product(name: 'Apples')
+          ]),
       floatingActionButton: const FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
         onPressed: null,
@@ -74,7 +44,7 @@ class TutorialHome extends StatelessWidget {
 void main() {
   runApp(
     const MaterialApp(
-      home: TutorialHome(),
+      home: MyApp(),
     ),
   );
 }

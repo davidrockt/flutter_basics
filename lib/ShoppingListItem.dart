@@ -48,3 +48,41 @@ class ShoppingListItem extends StatelessWidget {
     );
   }
 }
+
+class ShoppingList extends StatefulWidget {
+  const ShoppingList({required this.products, super.key});
+
+  final List<Product> products;
+
+  @override
+  State<StatefulWidget> createState() {
+    return _ShoppingListState();
+  }
+}
+
+class _ShoppingListState extends State<ShoppingList> {
+  final _shoppingCart = <Product>{};
+
+  void _handleCartChanged(Product product, bool inCart) {
+    setState(() {
+      if (inCart) {
+        _shoppingCart.remove(product);
+      } else {
+        _shoppingCart.add(product);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: widget.products.map((product) {
+        return ShoppingListItem(
+          product: product,
+          inCart: _shoppingCart.contains(product),
+          onCartChanged: _handleCartChanged,
+        );
+      }).toList(),
+    );
+  }
+}
