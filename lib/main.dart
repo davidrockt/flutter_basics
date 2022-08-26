@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/Product.dart';
 import 'package:flutter_basics/ShoppingListItem.dart';
-
+import 'package:flutter_basics/second.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -32,10 +32,14 @@ class MyApp extends StatelessWidget {
             Product(name: 'Bananas'),
             Product(name: 'Apples')
           ]),
-      floatingActionButton: const FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         tooltip: 'Add', // used by assistive technologies
-        onPressed: null,
-        child: Icon(Icons.add),
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return const SecondScreen();
+          }));
+        },
+        child: Icon(Icons.arrow_forward),
       ),
     );
   }
