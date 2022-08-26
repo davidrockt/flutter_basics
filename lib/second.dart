@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/third.dart';
 
 class SecondScreen extends StatelessWidget {
   const SecondScreen({Key? key}) : super(key: key);
@@ -40,7 +41,9 @@ class SecondScreen extends StatelessWidget {
     return Scaffold(
       body: GestureDetector(
         onTap: () {
-          Navigator.pop(context);
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return const ThirdScreen();
+          }));
         },
         child: Center(
             child: Column(
