@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/griddy.dart';
 
 class ThirdScreen extends StatelessWidget {
   const ThirdScreen({super.key});
@@ -11,7 +12,13 @@ class ThirdScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Third Screen'),
           ),
-          body: _buildImageColumn(),
+          body: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return const GridScreen();
+                }));
+              },
+              child: _buildImageColumn()),
           floatingActionButton: FloatingActionButton(
             onPressed: () => Navigator.pop(context),
             child: const Icon(Icons.arrow_back),
