@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LayoutScreen extends StatelessWidget {
@@ -23,41 +24,75 @@ class LayoutScreen extends StatelessWidget {
   Widget _buildLayout() {
     return Column(
       children: [
-        _buildContainer(double.infinity, 200, Colors.cyan, const Text("IMG")),
-        _buildRow([
-          _buildContainer(200, 20, Colors.indigo, const Text("")),
-          _buildContainer(40, 20, Colors.amberAccent, const Text(""))
-        ], Colors.black26),
-        _buildRow([
-          _buildContainer(40, 20, Colors.amberAccent, const Text("")),
-          _buildContainer(40, 20, Colors.amberAccent, const Text("")),
-          _buildContainer(40, 20, Colors.amberAccent, const Text("")),
-        ], Colors.black12),
-        _buildContainer(double.infinity, 150, Colors.purple,
-            const Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam"
-                "nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam")),
+        _buildContainer(double.infinity, 200,
+            Image.network('https://picsum.photos/id/0/400/200'),
+            padding: 0),
+        Container(
+          width: double.infinity,
+          height: 100,
+          padding: const EdgeInsets.all(10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              SizedBox(
+                width: 300,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Text(
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                        "Oeschinen Lake Campground"),
+                    Text("Kanderleg, Switzerland")
+                  ],
+                ),
+              ),
+              const Icon(Icons.star_purple500_outlined),
+              const Text("12"),
+            ],
+          ),
+        ),
       ],
     );
   }
 
-  Widget _buildContainer(double w, double h, Color c, Widget widget) {
+  Widget _buildContainer(double w, double h, Widget widget,
+      {double padding = 20}) {
     return Container(
       width: w,
       height: h,
-      alignment: Alignment.center,
-      padding: const EdgeInsets.all(20),
-      color: c,
+      padding: EdgeInsets.all(padding),
       child: widget,
     );
   }
 
   Widget _buildRow(List<Widget> widgets, Color c) {
     return Container(
-      color: c,
       padding: const EdgeInsets.all(10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: widgets,
+      ),
+    );
+  }
+
+  Widget _buildTwoLiner(double w, double h, Widget wdgRow1, Widget wdgRow2) {
+    return Container(
+      width: w,
+      height: h,
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.black),
+        color: Colors.amber,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            children: [wdgRow1],
+          ),
+          Row(
+            children: [wdgRow2],
+          )
+        ],
       ),
     );
   }
