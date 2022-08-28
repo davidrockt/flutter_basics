@@ -21,18 +21,18 @@ class SecondScreen extends StatelessWidget {
       children: [
         Expanded(
           child: Image.network(
-            'https://picsum.photos/210',
+            'https://picsum.photos/200',
           ),
         ),
         Expanded(
           flex: 2,
           child: Image.network(
-            'https://picsum.photos/210',
+            'https://picsum.photos/200',
           ),
         ),
         Expanded(
           child: Image.network(
-            'https://picsum.photos/210',
+            'https://picsum.photos/200',
           ),
         ),
       ],

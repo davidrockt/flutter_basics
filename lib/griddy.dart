@@ -15,7 +15,7 @@ class GridScreen extends StatelessWidget {
           body: GestureDetector(
             onTap: () {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return const LayoutScreen();
+                return LayoutScreen();
               }));
             },
               child: _buildGrid()

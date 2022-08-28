@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LayoutScreen extends StatelessWidget {
@@ -24,30 +23,20 @@ class LayoutScreen extends StatelessWidget {
   Widget _buildLayout() {
     return Column(
       children: [
-        _buildContainer(double.infinity, 200,
-            Image.network('https://picsum.photos/id/0/400/200'),
-            padding: 0),
+        SizedBox(
+            width: double.infinity,
+            height: 200,
+            child: Image.network('https://picsum.photos/id/0/400/200')),
+
+        // This row was helped by https://github.com/flutter/website/tree/main/examples/layout/lakes/step2/lib/main.dart
         Container(
-          width: double.infinity,
-          height: 100,
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(32),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizedBox(
-                width: 300,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Text(
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                        "Oeschinen Lake Campground"),
-                    Text("Kanderleg, Switzerland")
-                  ],
-                ),
+              Expanded(
+                child: _columnTwoLiner(),
               ),
-              const Icon(Icons.star_purple500_outlined),
-              const Text("12"),
+              _rowRating(),
             ],
           ),
         ),
@@ -55,45 +44,27 @@ class LayoutScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildContainer(double w, double h, Widget widget,
-      {double padding = 20}) {
-    return Container(
-      width: w,
-      height: h,
-      padding: EdgeInsets.all(padding),
-      child: widget,
-    );
+  Widget _rowRating() {
+    return Row(children: const [
+      Icon(color: Colors.purple, Icons.star_purple500_outlined),
+      Text("12")
+    ]);
   }
 
-  Widget _buildRow(List<Widget> widgets, Color c) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: widgets,
-      ),
-    );
-  }
-
-  Widget _buildTwoLiner(double w, double h, Widget wdgRow1, Widget wdgRow2) {
-    return Container(
-      width: w,
-      height: h,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.black),
-        color: Colors.amber,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Row(
-            children: [wdgRow1],
-          ),
-          Row(
-            children: [wdgRow2],
-          )
-        ],
-      ),
+  Widget _columnTwoLiner() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Text(
+              style: TextStyle(fontWeight: FontWeight.bold),
+              "Oeschinen Laket Campground"),
+        ),
+        Text(
+            style: const TextStyle(color: Colors.black26),
+            "Kanderleg, Switzerland")
+      ],
     );
   }
 }
