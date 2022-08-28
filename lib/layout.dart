@@ -23,12 +23,13 @@ class LayoutScreen extends StatelessWidget {
   Widget _buildLayout() {
     return Column(
       children: [
+        // Row #1 Image
         SizedBox(
             width: double.infinity,
             height: 200,
             child: Image.network('https://picsum.photos/id/0/400/200')),
 
-        // This row was helped by https://github.com/flutter/website/tree/main/examples/layout/lakes/step2/lib/main.dart
+        // Row #2 Title / Rating
         Container(
           padding: const EdgeInsets.all(32),
           child: Row(
@@ -40,6 +41,42 @@ class LayoutScreen extends StatelessWidget {
             ],
           ),
         ),
+
+        // Row #3 Buttons
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            _columnIconText(Icons.call, "CALL"),
+            _columnIconText(Icons.map_outlined, "ROUTE"),
+            _columnIconText(Icons.share_outlined, "SHARE"),
+          ],
+        ),
+
+        // Row #4 Text Field
+        Container(
+          padding: const EdgeInsets.all(30),
+          child: const Text(
+              "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy "
+                  "eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed "
+                  "diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. "
+                  "Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor "
+                  "sit amet."),
+        )
+      ],
+    );
+  }
+
+  Column _columnIconText(IconData icon, String text) {
+    return Column(
+      children: [
+        Container(
+          padding: const EdgeInsets.only(bottom: 5),
+          child: Icon(color: Colors.blue, icon),
+        ),
+        Text(
+            style: const TextStyle(
+                fontSize: 12, fontWeight: FontWeight.w400, color: Colors.blue),
+            text)
       ],
     );
   }

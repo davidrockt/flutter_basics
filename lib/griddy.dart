@@ -32,7 +32,7 @@ class GridScreen extends StatelessWidget {
       padding: const EdgeInsets.all(4),
       mainAxisSpacing: 4,
       crossAxisSpacing: 4,
-      children: _buildGridTileList(30)
+      children: _buildGridTileList(15)
                 + _buildStack());
 
 // The images are saved with names pic0.jpg, pic1.jpg...pic29.jpg.
