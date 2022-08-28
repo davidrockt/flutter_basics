@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/layout.dart';
 
 class GridScreen extends StatelessWidget {
   const GridScreen({super.key});
@@ -11,7 +12,14 @@ class GridScreen extends StatelessWidget {
           appBar: AppBar(
             title: const Text('Grid-Screen'),
           ),
-          body: _buildGrid(),
+          body: GestureDetector(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return const LayoutScreen();
+              }));
+            },
+              child: _buildGrid()
+          ),
           floatingActionButton: FloatingActionButton(
             onPressed: () => Navigator.pop(context),
             child: const Icon(Icons.arrow_back),
