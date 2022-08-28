@@ -21,13 +21,13 @@ class LayoutScreen extends StatelessWidget {
   }
 
   Widget _buildLayout() {
-    return Column(
+    return ListView(
       children: [
         // Row #1 Image
-        SizedBox(
-            width: double.infinity,
-            height: 200,
-            child: Image.network('https://picsum.photos/id/0/400/200')),
+        FittedBox(
+          fit: BoxFit.cover,
+          child: Image.network('https://picsum.photos/id/0/400/200'),
+        ),
 
         // Row #2 Title / Rating
         Container(
